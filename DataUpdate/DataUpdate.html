@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
@@ -16,7 +17,7 @@
 				<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
 				  <span id="btnAdd" class="glyphicon glyphicon-plus">Add</span>
 				</button>
-				<button type="button" class="btn btn-default btn-lg" ng-click="edit()">
+				<button type="button" id="editBtn" class="btn btn-default btn-lg" ng-click="edit(work)">
 				  <span id="btnText" class="glyphicon glyphicon-pencil">{{btnTxt}}</span>
 				</button>
 			</div>
@@ -31,27 +32,28 @@
 			      <div class="modal-body">
 			        <div class="form-group">
 			        	<label for="craftName">Craft Name</label>
-			        	<input type="text" class="form-control" id="craftName" placeholder="Enter a name for your newly created craft">
+			        	<input type="text" class="form-control" id="craftName" ng-model="craftName" placeholder="Enter a name for your newly created craft">
 			        </div>
 			        <div class="form-group">
 			        	<label for="craftDetails">Craft Details</label>
-					   <textarea rows="8" cols="50" class="form-control" id="craftDetails" placeholder="Enter details about the craft (max. 1000 chars)" maxlength="1000"></textarea>
+					   <textarea rows="8" cols="50" class="form-control" id="craftDetails" ng-model="craftDetails" placeholder="Enter details about the craft (max. 1000 chars)" maxlength="1000"></textarea>
 					 </div>
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Save changes</button>
+			        <button type="button" class="btn btn-primary" ng-click="add()">Save changes</button>
 			      </div>
 			    </div>
 			  </div>
 			</div>
 			<!--Modal window ends-->
 			<div class="detailsDiv commonMargin"><span><strong>Details:</strong> {{workDetails}}</span></div>
-			<div class=".col-md-8 commonMargin">
-				<ul class="list-inline" ng-repeat="w in work" id="{{'ul'+w.id}}">
-					<li><input type="image" src="images/reorderIcon.png" class="reorderBtn"/></li>
-					<li><input type="image" src="images/removeIcon.png" class="removeBtn"/></li>
-					<li><button type="button" class="dataButton" id="{{w.id}}" ng-click="workDetailsBtn(this,w.id)">{{ (w.name) }}</button></li>
+			<div ui:sortable class=".col-md-8 commonMargin">
+				<ul class="list-inline" ng-repeat="w in work" id="{{'ul'+$index}}">
+					<li><input type="image" src="images/reorderIcon.png" class="reorderBtn"/></li><!--need to work on reordering-->
+					<li><input type="image" src="images/removeIcon.png" class="removeBtn" ng-click="delete($index)"/></li>
+					<li><input type="image" src="images/edit.png" class="removeBtn" ng-click="saveUpdate($index)" data-toggle="modal" data-target="#myModal"></li>
+					<li><button type="button" class="dataButton" id="{{$index}}" ng-click="workDetailsBtn(this,($index))">{{ (w.name) }}</button></li>
 				</ul>
 			</div>
 		</div>
