@@ -14,11 +14,11 @@
 	<div ng-app="" ng-controller="workController" class="container-fluid">
 		<div class="row" >
 			<div class=".col-md-4 commonMargin">
-				<button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
-				  <span id="btnAdd" class="glyphicon glyphicon-plus">Add</span>
+				<button type="button" id="editBtn" class="btn btn-default btn-lg" ng-click="edit()">
+				  <span id="btnText" ng-disabled="({{btnTxt}}=='Done')" class="glyphicon glyphicon-pencil">{{btnTxt}}</span>
 				</button>
-				<button type="button" id="editBtn" class="btn btn-default btn-lg" ng-click="edit(work)">
-				  <span id="btnText" class="glyphicon glyphicon-pencil">{{btnTxt}}</span>
+				<button type="button" id="addBtn" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
+				  <span id="btnAdd" class="glyphicon glyphicon-plus">Add</span>
 				</button>
 			</div>
 			<!--Modal window starts-->

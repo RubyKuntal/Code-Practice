@@ -51,9 +51,9 @@ function workController($scope) {
                 name: $scope.craftName,
                 details: $scope.craftDetails
             });
-            $scope.workDetails=$scope.craftDetails;
-            $("*").removeClass("activeClass");
-            $('#'+($scope.work.length)-1).addClass("activeClass");
+            $scope.workDetails=$scope.work[0].details;
+            //$("*").removeClass("activeClass");
+            //$('#'+eval(($scope.work.length)-1)).addClass("activeClass");
             if(($scope.work.length)==1)
             {
                  $(".detailsDiv").show();
@@ -99,6 +99,9 @@ function workController($scope) {
          {
              $(".detailsDiv").hide();
              $("#editBtn").hide();
+             $("#addBtn").show();
+             $scope.btnTxt="Edit";
+             $("#btnText").addClass("glyphicon glyphicon-pencil");
          }
     };
 
@@ -108,10 +111,11 @@ function workController($scope) {
     };
 
     $scope.btnTxt="Edit";
-    $scope.edit=function(obj){
+    $scope.edit=function(){
     	if($scope.btnTxt=="Edit")
     	{        
     		$scope.btnTxt="Done";
+            $("#addBtn").hide();
     		$("#btnText").removeClass("glyphicon glyphicon-pencil");
 
     		$('.removeBtn').animate({
@@ -139,6 +143,7 @@ function workController($scope) {
     	else
     	{
     		$scope.btnTxt="Edit";
+            $("#addBtn").show();
     		$("#btnText").addClass("glyphicon glyphicon-pencil");
     		$('.removeBtn').animate({
               paddingLeft: '-15px',
