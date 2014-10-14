@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Portfolio of UI Developer, Ruby Kuntal</title>
+	<link rel="stylesheet" href="style.css">
+	<!-- jQuery CDN -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- KnockoutJS CDN -->
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+	<div>
+		<svg id="svgelem" height="1000" width="700" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+			    <filter id = "i1" width = "150%" height = "150%">
+			        <feOffset result = "offOut" in = "SourceGraphic" dx = "10" dy = "10"/>
+			        <feColorMatrix result = "matrixOut" in = "offOut" type = "matrix" values = "0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0"/>
+			        <feGaussianBlur result = "blurOut" in = "matrixOut" stdDeviation = "5"/>
+			        <feBlend in = "SourceGraphic" in2 = "blurOut" mode = "normal"/>
+			    </filter>
+			  </defs>
+			<g data-bind="foreach: points">
+		    	<polygon data-bind="attr:{id:'polygon_'+pid,points:point}" class="polygonShape" d="M 30,100 L 100,20 170,100 Z" fill="#297ACC" stroke="#2162A3" stroke-width="1" filter="url(#i1)"></polygon>
+		    	<text class="polyText" data-bind="attr:{x:a, y:b}">
+		    		<tspan data-bind="html:txt" fill="#99CCFF"></tspan>
+		    	</text>
+		    </g>
+		   </svg>
+	</div>
+	<footer>
+		<small>Copyright &copy; 2014 Ruby</small><br>
+		<span style="text-align:right; font-size:14px;">Site under construction...</span>
+	</footer>
+	<script type="text/javascript">
+
+	     function PolygonViewModel()
+	     {
+	     	var x=0;
+	     	var y=100;
+	     	 this.points = ko.observableArray([
+	     	 	{point:getHexCoordinates(x,y,y),pid:"AboutMe",a:x+50,b:y,txt:"About Me"},
+			    {point:getHexCoordinates((x+160),(y+100),y),pid:"Work",a:(x+160)+75,b:(y+100), txt:"Work"},
+			    {point:getHexCoordinates((2*(x+160)),y,y),pid:"Contact",a:(2*(x+160))+50,b:y, txt:"Contact Me"}
+			    ]);
+	     }
+
+	     ko.applyBindings(new PolygonViewModel());
+
+	</script>
+</body>
+</html>
