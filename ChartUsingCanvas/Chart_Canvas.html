@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Charts using Canvas</title>
+    <style type="text/css">
+        div{
+            position: absolute;
+            font-size: 12px;
+            font-family: "Calibri";
+            border-width: 1px;
+            padding: 5px;
+        }
+    </style>
+    <style type="text/css" src="styles/style.css"></style>
+    <script type="text/javascript" scr="scripts/script.js"></script>
+</head>
+<body>
+	<canvas width="500" height="500" id="canvas"></canvas>
+    <div id="txt"></div>
+	<script type="text/javascript">
+
+		//For Bar Chart
+
+        var dataTotal = [ 
+        {data:16, label:"Jan"}, 
+        {data:49, label:"Feb"},
+        {data:100, label:"Mar"},
+        {data:30, label:"Apr"},
+        {data:100, label:"May"}
+        ];
+        var canvas = document.getElementById('canvas'); 
+        var c = canvas.getContext('2d');
+
+        var xMargin=50;
+        var yMargin=50;
+        var barWidth=40;
+        var barDistance=80;
+        var cHeight=canvas.height;
+        var roundedMax;
+        var arr=[];
+        var interval;
+        var animationDone=[];
+
+        for(var i=0;i<dataTotal.length;i++)
+        {
+            arr.push(dataTotal[i].data);
+        }
+         var yMax= Math.max.apply(null, arr);
+        roundedMax =10-(yMax%10)+yMax;
+        var dataFactor= (canvas.height - 2*yMargin)/roundedMax;
+		var yFactor=(canvas.height - 2*yMargin)/5;
+        var rects=[];
+ 
+        function addValue(){
+        for (i = 0; i < dataTotal.length; i++) {
+            rects.push({x:i*barDistance+xMargin, 
+                    y:cHeight-yMargin-(dataTotal[i].data*dataFactor), 
+                    w:barWidth, 
+                    h:dataTotal[i].data*dataFactor,
+                    dataValue:dataTotal[i].data,
+                    monthValue:dataTotal[i].label});
+                if(animationDone.length<dataTotal.length)
+                    animateBox(c,rects[i],i);
+                else
+                {
+                    c.fillStyle = "#A5BED6";
+                    c.fillRect(rects[i].x+4,rects[i].y+4,rects[i].w,rects[i].h-4);
+
+                    c.fillStyle = "#3399FF";
+                    c.fillRect(rects[i].x,rects[i].y,rects[i].w,rects[i].h);
+                }
+            }   
+        }
+            
+        function createDataStrokes(){
+            for(var i=0; i<rects.length; i++) { 
+                c.strokeStyle="#006BB2";
+                if(rects[i+1]){
+                    c.beginPath(); 
+                    c.moveTo((rects[i].x+rects[i].w/2),(rects[i].y)); 
+                    c.lineTo((rects[i+1].x+rects[i+1].w/2),(rects[i+1].y)); 
+                    c.stroke(); 
+                }
+
+                c.beginPath();
+                c.arc((rects[i].x+rects[i].w/2),(rects[i].y),3,0,2*Math.PI);
+                c.stroke();
+            }
+        }
+
+        for(var i=0; i<rects.length; i++) { 
+        
+                c.strokeStyle="#006BB2";
+                if(rects[i+1]){
+                    c.beginPath(); 
+                    c.moveTo((rects[i].x+rects[i].w/2),(rects[i].y)); 
+                    c.lineTo((rects[i+1].x+rects[i+1].w/2),(rects[i+1].y)); 
+                    c.stroke(); 
+                }
+
+                c.strokeStyle="#990000";
+                c.beginPath();
+                c.arc((rects[i].x+rects[i].w/2),(rects[i].y),3,0,2*Math.PI);
+                c.stroke();
+            }   
+
+        function animateBox(c, rectsId,i) {
+            var temph = 0;
+            var tempy = cHeight - yMargin;
+
+                var interval=setInterval(function(){
+                    
+                    if(rectsId.y <= cHeight-yMargin-temph)
+                    {
+                        tempy -= 5;
+                        temph +=5;
+                        c.fillStyle = "#A5BED6";
+                        c.fillRect(rectsId.x+4,tempy+4,rectsId.w,temph-4);
+
+                        c.fillStyle = "#3399FF";
+                        c.fillRect(rectsId.x,tempy,rectsId.w,temph);
+                    }
+                    else{
+                        clearInterval(interval);
+                        animationDone.push("false");
+                    }
+            }, 10);   
+        }
+
+		 var createBar= function(){
+            rects=[];
+            addValue();
+        }
+
+        createBar();
+        setTimeout(function(){if(animationDone.length==dataTotal.length)
+                createDataStrokes()},1000);
+		c.lineWidth = 1.0; 
+		c.beginPath(); 
+		c.moveTo(xMargin,yMargin-10); 
+		c.lineTo(xMargin,cHeight-yMargin); 
+		c.lineTo(cHeight-xMargin,cHeight-yMargin); 
+		c.stroke();  
+
+        c.lineWidth = 1.0; 
+        c.beginPath(); 
+        c.moveTo(cHeight-xMargin-3,cHeight-yMargin+3); 
+        c.lineTo(cHeight-xMargin,cHeight-yMargin); 
+        c.lineTo(cHeight-xMargin-3,cHeight-yMargin-3); 
+        c.stroke();
+
+        c.lineWidth = 1.0; 
+        c.beginPath(); 
+        c.moveTo(xMargin-3,yMargin-7); 
+        c.lineTo(xMargin,yMargin-10); 
+        c.lineTo(xMargin+3,yMargin-7); 
+        c.stroke();
+
+		for(var i=0; i<dataTotal.length; i++) { 
+		    c.fillText((5-i)*(roundedMax/5) + "",20, i*yFactor+yMargin); 
+			
+            c.beginPath(); 
+		    c.moveTo(45,i*yFactor+yMargin); 
+		    c.lineTo(50,i*yFactor+yMargin); 
+		    c.stroke(); 
+        }
+
+        for(var i=0; i<dataTotal.length; i++) { 
+            c.fillText(dataTotal[i].label, i*barDistance+xMargin, cHeight-yMargin+20); 
+        }
+
+        function collides(rects, x, y) {
+            var isCollision = false;
+            for (var i = 0, len = rects.length; i < len; i++) {
+                var left = rects[i].x, right = rects[i].x+rects[i].w;
+                var top = rects[i].y, bottom = rects[i].y+rects[i].h;
+                if (right >= x
+                    && left <= x
+                    && bottom >= y
+                    && top <= y) {
+                    isCollision = rects[i];
+                }
+            }
+            return isCollision;
+        }
+
+        var mouseOnBar=false;
+
+        canvas.addEventListener('mousemove', function(e) {
+            var rect = collides(rects, e.offsetX, e.offsetY);
+            var d=document.getElementById("txt");
+
+            if (rect && animationDone.length==dataTotal.length) {
+                mouseOnBar=true;
+                d.style.left = (rect.x+rect.w/2)+'px';
+                d.style.top = (rect.y+rect.w/2-50)+'px';
+                d.style.backgroundColor= "#F1F1F1";
+                d.style.borderStyle= "solid";
+                d.style.width='70px';
+                d.innerHTML="Month: "+rect.monthValue+"<br/>Marks: "+rect.dataValue;
+                c.fillStyle="#1F5C99"; 
+                c.fillRect(rect.x,rect.y,rect.w,rect.h);
+            }
+            else if(mouseOnBar)
+            {
+                d.innerHTML="";
+                d.style.backgroundColor= "none";
+                d.style.borderStyle= "none";
+                d.style.padding= "0";
+                
+                createBar();
+                createDataStrokes();
+
+                console.log("removed");
+                mouseOnBar=false;
+            }
+        }, false);
+
+	</script>
+</body>
+</html>
