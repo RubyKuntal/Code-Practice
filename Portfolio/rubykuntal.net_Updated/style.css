@@ -1,0 +1,371 @@
+body{
+	font-family: Calibri,Tahoma;
+	color: #787878;
+}
+.mainBcg{
+	position:absolute;
+  	top:0px;
+  	left:0px;
+  	right:0px;
+}
+header{
+	width: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+	background-color: #F0F0F0;
+}
+.nav{
+	margin-right: auto;
+	margin-left: 150px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+.myName{
+	float:right;
+	padding-right: 20px;
+}
+.navlist li{
+	display: inline;
+	list-style-type: none;
+	padding: 20px;
+}
+.navlist li a{
+	text-decoration: none;
+	color: #787878;
+}
+.introPage{
+	margin-right: auto;
+	margin-left: 210px;
+	padding-top: 100px;
+}
+.quote{
+	color: #4AABCC;
+	font-size: 50px;
+}
+.intro{
+	background-color: #7DDEFF;
+	height: 520px;
+}
+.introId{
+	margin-right: auto;
+	margin-left: 210px;
+	margin-top: 20px;
+	padding: 100px 0px;
+}
+.introText{
+	font-size: 20px;
+	line-height: 1.4em;
+	font-weight: normal;
+}
+.introDivs{
+	position: absolute;
+	margin: 120px 10px;
+}
+.html5{
+	position: absolute;
+	margin-left: 0px;
+	z-index:5;
+	-webkit-filter: drop-shadow(5px 5px 5px #3E6F80);
+	filter: drop-shadow(5px 5px 5px #3E6F80); 
+}
+.css3{
+	position: absolute;
+	margin-top: 0px;
+	margin-left: 100px;
+	z-index:3;
+	-webkit-filter: drop-shadow(5px 5px 5px #3E6F80);
+	filter: drop-shadow(5px 5px 5px #3E6F80);
+}
+.javascript{
+	position: absolute;
+	margin-top: 40px;
+	margin-left: 195px;
+	z-index:4;
+	-webkit-filter: drop-shadow(5px 5px 5px #3E6F80);
+	filter: drop-shadow(5px 5px 5px #3E6F80);
+}
+.jquery{
+	position: absolute;
+	margin-top: 60px;
+	margin-left: 315px;
+	z-index:2;
+	-webkit-filter: drop-shadow(5px 5px 5px #3E6F80);
+	filter: drop-shadow(5px 5px 5px #3E6F80);
+}
+.angularjs{
+	position: absolute;
+	margin-top: 15px;
+	margin-left: 280px;
+	z-index:1;
+	-webkit-filter: drop-shadow(5px 5px 5px #3E6F80);
+	filter: drop-shadow(5px 5px 5px #3E6F80);
+}
+.bootstrap{
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 390px;
+	z-index:0;
+	-webkit-filter: drop-shadow(5px 5px 5px #3E6F80);
+	filter: drop-shadow(5px 5px 5px #3E6F80);
+}
+
+
+.animated { 
+    -webkit-animation-duration: 3s; 
+    animation-duration: 3s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    -webkit-animation-timing-function: ease-out; 
+    animation-timing-function: ease-out; 
+    animation-iteration-count:infinite; 
+    -webkit-animation-iteration-count:infinite; 
+} 
+
+@-webkit-keyframes bounce { 
+    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+    40% {-webkit-transform: translateY(-30px);} 
+    60% {-webkit-transform: translateY(-15px);} 
+} 
+
+@keyframes bounce { 
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+    40% {transform: translateY(-30px);} 
+    60% {transform: translateY(-15px);} 
+} 
+
+.bounce { 
+    -webkit-animation-name: bounce; 
+    animation-name: bounce; 
+}
+
+.workPage{
+	margin-right: auto;
+	margin-left: 210px;
+	padding-top: 100px;
+}
+.workQuote{
+	color: #008F6B;
+	font-size: 50px;
+}
+.work{
+	background-color: #80E6CC;
+}
+#workId{
+	margin-right: auto;
+	margin-left: 210px;
+	margin-top: 20px;
+	padding: 100px 0px;
+	height: 700px;
+}
+.spanText{
+	width: 92%;
+}
+.workText{
+	font-size: 20px;
+	line-height: 1.4em;
+	font-weight: normal;
+}
+.contactPage{
+	margin-right: auto;
+	margin-left: 210px;
+	padding-top: 100px;
+}
+.contactQuote{
+	color: #FF6666;
+	font-size: 50px;
+}
+.contact{
+	background-color: #FFB2B2;
+}
+.contact div{
+	margin-right: auto;
+	margin-left: 210px;
+	margin-top: 20px;
+	padding: 100px 0px;
+	height: 300px;
+}
+.contactText{
+	font-size: 20px;
+	line-height: 1.4em;
+	font-weight: normal;
+}
+span a{
+	text-decoration: none;
+	color: black;
+}
+.workList div{
+	float:left;
+	list-style-type: none;
+	margin: 20px 5px;
+	padding: 30px;
+	width: 12%;
+	height: 25px;
+	text-align: center;
+	border-radius: 3px;
+}
+.workList div a{
+	font-size: 17px;
+	line-height: 1.4em;
+	font-weight: normal;
+	text-decoration: none;
+	color: white;
+}
+#Flyers{
+	background-color: #FF8533;
+}
+#Flyers .active{
+	background-color: #B25D24;
+}
+#MobileDMVS{
+	background-color: #19D175;
+}
+#SmartDMVS{
+	background-color: #A37547;
+}
+#UIContestWinner
+{
+	background-color: #FF9696;
+}
+#Logos
+{
+	background-color: #335CD6;
+}
+#workWindow {
+	width: 92%;
+}
+#workWindow{
+	clear: left;
+	border-radius: 5px;
+	border: 1.5px solid rgba(0,0,0,.4);
+	box-shadow: 0 0 20px rgba(0,0,0,.3);
+	float:left;
+	background-color: white;
+}
+
+.prevBtn, .nxtBtn{
+	height: 32px;
+	width: 32px;
+}
+.prevBtn{
+	float: left;
+	margin-top: 220px;
+	margin-left: 15px;
+}
+.nxtBtn{
+	float: right;
+	margin-top: 220px;
+	margin-right: 15px;
+}
+.imgTxt{
+	margin:0 auto;
+    width:800px;
+    height:540px;
+    overflow: hidden;
+    position: relative;
+    padding-top: 20px;
+}
+.floatingText{
+	vertical-align: middle;
+	font-size: 17px;
+	line-height: 1.6em;
+	font-weight: normal;
+}
+.imgTxt ul{
+    list-style: none;
+    margin:0;
+    padding:0;
+    position: absolute;
+}
+
+#workWindow #mailersId img{ 
+	height: 100%;
+	border-style: solid;
+	border-width: 0px;
+	border-radius: 11px;
+	box-shadow: 0 0 20px rgba(0,0,0,.3);
+	padding:0px;
+}
+
+#mailersId li{
+    float:left;
+    width: 900px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#workWindow #mobileDMVSId img{ 
+	height: 100%;
+	border-style: solid;
+	border-width: 0px;
+	border-radius: 11px;
+	box-shadow: 0 0 20px rgba(0,0,0,.3);
+}
+
+#mobileDMVSId li{
+    float:left;
+    width: 900px;
+    text-align: center;
+    margin-top: 10px;
+}
+#workWindow #smartDMVSId img{ 
+	height: 100%;
+	border-style: solid;
+	border-width: 0px;
+	border-radius: 11px;
+	box-shadow: 0 0 20px rgba(0,0,0,.3);
+}
+
+#smartDMVSId li{
+    float:left;
+    width: 900px;
+    text-align: center;
+    margin-top: 10px;
+}
+#workWindow #UIContestId img{ 
+	height: 100%;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 10px;
+	border-color: #52A3CC;
+	padding: 5px 5px;
+	box-shadow: 0 0 20px rgba(0,0,0,.3);
+}
+
+#UIContestId li{
+    float:left;
+    width: 900px;
+    text-align: center;
+    margin-top: 30px;
+}
+#workWindow #logosId img{ 
+	height: 100%;
+}
+
+#logosId li{
+    float:left;
+    width: 900px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
